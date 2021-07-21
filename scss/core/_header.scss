@@ -1,0 +1,438 @@
+// //header
+
+header {
+    --heightHeader: 80px;
+    width: 100%;
+    height: var(--heightHeader);
+    background: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    color: $cl-text;
+    font-size: 15px;
+    @include mid(true);
+    @include transition($t);
+    .container-fluid {
+        .menu-top {
+            display: flex;
+            align-items: center;
+            li {
+                @include mid(true);
+                a {
+                    height: 100%;
+                    text-decoration: none;
+                    @include text(11px, ar, normal, $cl-text, uppercase);
+                    font-weight: 600;
+                    @include transition($t);
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        fill: $cl-dark;
+                    }
+                    &.--white {
+                        color: $cl-light;
+                        svg {
+                            fill: $cl-light;
+                        }
+                        &:hover {
+                            color: $cl-dark;
+                            svg {
+                                fill: $cl-dark;
+                            }
+                        }
+                    }
+                    &:hover {
+                        color: $cl-light;
+                        @include transition($t);
+                        svg {
+                            fill: $cl-light;
+                            @include transition($t);
+                        }
+                    }
+                }
+                &:nth-child(2) {
+                    margin: 0 20px 0 30px;
+                }
+            }
+            &.--white {
+                li {
+                    a {
+                        color: $cl-light;
+                        svg {
+                            fill: $cl-light;
+                        }
+                        &:hover {
+                            color: $cl-dark;
+                            svg {
+                                fill: $cl-dark;
+                            }
+                        }
+                    }
+                }
+            }
+            @include xs {
+                display: none;
+            }
+        }
+    }
+    &.--headerfull {
+        --heightHeader: 90px;
+        position: relative;
+        display: flex;
+        .container-fluid {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logo {
+                img {
+                    width: 80px;
+                }
+            }
+            ul {
+                li {
+                    a:hover {
+                        color: rgba(0, 0, 0, 0.733);
+                        svg {
+                            path {
+                                fill: rgba(0, 0, 0, 0.733);
+                            }
+                        }
+                    }
+                }
+            }
+            .back-to-all {
+                padding-right: 100px;
+                @include mid(true);
+                height: 100%;
+                text-decoration: none;
+                @include text(11px, ar, normal, $cl-text, uppercase);
+                font-weight: 600;
+                @include transition($t);
+                svg {
+                    margin-left: 20px;
+                    width: 20px;
+                    height: 20px;
+                    fill: $cl-dark;
+                    transform: rotate(180deg);
+                }
+                &:hover {
+                    @include transition($t);
+                    color: rgba(0, 0, 0, 0.733);
+                    svg {
+                        path {
+                            @include transition($t);
+                            fill: rgba(0, 0, 0, 0.733);
+                        }
+                    }
+                }
+                @include sm {
+                    padding-right: 0px;
+                }
+                &.--pr{
+                    padding-right: 222px;
+                }
+            }
+        }
+        @include sm {
+            display: none;
+        }
+    }
+    &.--headertop {
+        position: relative;
+        display: flex;
+        @include sm {
+            display: none;
+        }
+    }
+}
+
+// header {
+//   --heightHeader: 80px;
+//   width: 100%;
+//   height: var(--heightHeader);
+//   background: transparent;
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   z-index: 300;
+//   color: $cl-light;
+//   font-size: 15px;
+//   @include transition($t);
+
+//   .container-fluid {
+//     height: 100%;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     position: relative;
+//     .logo {
+//       a {
+//         display: block;
+//         text-decoration: none;
+//         img {
+//           width: 175px;
+//         }
+//       }
+//     }
+//     .menu-desk {
+//       height: 100%;
+//       list-style: none;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       margin: 0;
+//       padding: 0;
+//       @extend .box-center;
+//       li {
+//         width: 100%;
+//         height: 100%;
+//         a {
+//           height: 100%;
+//           text-decoration: none;
+//           font-weight: bold;
+//           margin: 0 18px;
+//           overflow: hidden;
+//           position: relative;
+//           @include mid(true);
+//           @include transition($t);
+//           @include text(16px, fmain, normal, $cl-light, uppercase);
+//           &::after {
+//             content: "";
+//             width: 100%;
+//             height: 2px;
+//             background-color: $cl-main;
+//             position: absolute;
+//             left: 0;
+//             bottom: 24px;
+//             @include transform(scaleX(0));
+//             @include transform-origin(left center);
+//             @include transition($t cubic-bezier(0.82, 0.44, 0.23, 0.86));
+//           }
+//           &:hover {
+//             color: $cl-main;
+//             transition: 0.3s;
+
+//             &::after {
+//               @include transform(scaleX(1));
+//               @include transform-origin(right center);
+//               @include transition($t cubic-bezier(0.82, 0.44, 0.23, 0.86));
+//             }
+//           }
+//         }
+//       }
+//     }
+//     .right {
+//       width: 100%;
+//       height: 100%;
+//       display: inline-flex;
+//       justify-content: flex-end;
+//       .lang {
+//         height: 100%;
+//         @include mid(true);
+//         &__current {
+//           height: 100%;
+//           cursor: pointer;
+//           display: inline-flex;
+//           position: relative;
+//           @include text(16px, fmain, normal, $cl-light, uppercase);
+//           i {
+//             @include mid(true);
+//             margin-left: 8px;
+//             img {
+//               width: 12px;
+//             }
+//           }
+//           &:hover {
+//             .lang__option {
+//               visibility: visible;
+//               transition: 0.3s;
+//             }
+//           }
+//         }
+//         &__current-item {
+//           @include mid(true);
+//           height: 100%;
+//           span {
+//             font-weight: bold;
+//           }
+//           i {
+//             margin-left: 5px;
+//             img {
+//               width: 12px;
+//             }
+//           }
+//         }
+
+//         &__option {
+//           position: absolute;
+//           overflow: hidden;
+//           right: 0;
+//           top: var(--heightHeader);
+//           background: $cl-light;
+//           // visibility: hidden;
+//           opacity: 0;
+//           pointer-events: none;
+//           transition: 0.3s;
+//           div {
+//             padding: 5px 32px;
+//             display: block;
+//             text-decoration: none;
+//             color: $cl-dark;
+//             border-bottom: 1px solid rgba(236, 231, 236, 0.329);
+//             &:last-child {
+//               border-bottom: none;
+//             }
+//             &:hover {
+//               background-color: rgba(138, 138, 138, 0.068);
+//             }
+//           }
+//           &.active-lang {
+//             opacity: 1;
+//             pointer-events: auto;
+//             transition: 0.3s;
+//           }
+//         }
+//       }
+//       .btn-menu {
+//         display: none;
+//         height: 100%;
+//         justify-content: center;
+//         align-items: center;
+//         margin-left: 20px;
+//         cursor: pointer;
+//         .hamburger-menu,
+//         .hamburger-menu:after,
+//         .hamburger-menu:before {
+//           width: 40px;
+//           height: 2px;
+//         }
+
+//         .hamburger-menu {
+//           position: relative;
+//           background: $bg-main;
+//           transition: all 0.1s;
+
+//           &.clicked {
+//             background: rgba(255, 255, 255, 0);
+//           }
+//         }
+
+//         .hamburger-menu:before {
+//           content: "";
+//           position: absolute;
+//           left: 0;
+//           bottom: 10px;
+//           background: $bg-main;
+//           transition: bottom 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49),
+//             transform 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+//         }
+
+//         .hamburger-menu:after {
+//           content: "";
+//           position: absolute;
+//           left: 0;
+//           top: 10px;
+//           background: $bg-main;
+//           transition: top 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+//         }
+
+//         .hamburger-menu.clicked:after {
+//           top: 0;
+//           transform: rotate(45deg);
+//           transition: top 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+//         }
+
+//         .hamburger-menu.clicked:before {
+//           bottom: 0;
+//           transform: rotate(-45deg);
+//           transition: bottom 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+//         }
+//       }
+//     }
+//     .menu-mb {
+//       display: none;
+//     }
+//   }
+
+//   &.bg-header {
+//     background: $cl-dark;
+//     @include transition($t);
+//   }
+
+//   @include sm {
+//     // CSS responsive tablet
+
+//     .logo {
+//       img {
+//         width: 150px;
+//       }
+//     }
+//     .menu-desk {
+//       display: none !important;
+//     }
+//     .menu-mb {
+//       display: flex;
+//       nav {
+//         background-color: $cl-dark;
+//         width: 100vw;
+//         height: 100vh;
+//         transition: 0.3s;
+//         position: fixed;
+//         top: 0;
+//         left: 0;
+//         @include transform(initial);
+//         z-index: 200;
+//         display: none;
+//         @include transition(opacity 0.3s cubic-bezier(0.65, 0.29, 0.32, 0.49));
+
+//         ul {
+//           flex-direction: column;
+//           list-style: none;
+//           @include mid(false);
+//           li {
+//             text-align: center;
+//             margin: 15px auto;
+//             a {
+//               padding: 15px;
+//               text-decoration: none;
+//               text-transform: uppercase;
+//               color: $color-text-light;
+//             }
+//           }
+//         }
+//       }
+//     }
+//     .btn-menu {
+//       display: flex !important;
+//       z-index: 999;
+//     }
+//   }
+//   @include xs {
+//     // CSS responsive mobile
+//     //show menu mb
+//     --heightHeader: 60px;
+
+//     .btn-menu {
+//       display: flex;
+//     }
+//   }
+// }
+
+// // show-menu-mobile
+// .show-menu-mobile {
+//   display: flex !important;
+//   nav {
+//     display: block !important;
+//   }
+// }
+
+// .active-menu-desk {
+//   color: $cl-main !important;
+
+//   &::after {
+//     @include transform(scaleX(1) !important);
+//   }
+// }

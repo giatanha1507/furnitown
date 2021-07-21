@@ -1,0 +1,101 @@
+//footer
+footer.footer {
+    background-color: $cl-blue;
+    color: $cl-light;
+    margin-top: -395px;
+    padding-bottom: 200px;
+    .bg-pen {
+        padding: 300px 0 120px 0;
+        background-color: $cl-blue;
+        .container {
+            position: relative;
+
+            .img-pen {
+                position: absolute;
+                right: -43px;
+                transform: translateY(-59%);
+            }
+        }
+    }
+
+    .container.--container-bottom {
+        position: relative;
+        .logo {
+            a {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                img {
+                    width: 95px;
+                    @include mid(false);
+                }
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: calc(50% - 45px);
+                    height: 1px;
+                    background-color: $cl-yellow;
+                    display: block;
+                }
+                &::after {
+                    right: 0;
+                    padding-left: 40px;
+                }
+            }
+        }
+        .nav-ft {
+            margin-top: 80px;
+            &__item {
+                text-align: center;
+                @include text(11px, $font-main, 26px, $cl-light, uppercase);
+            }
+        }
+    }
+    .back-to-top {
+        position: absolute;
+        bottom: -120px;
+        right: 40px;
+        span {
+            cursor: pointer;
+            display: inline-flex;
+            letter-spacing: 1px;
+            @include text(11px, $font-main, normal, #aaa, uppercase);
+            transform: rotate(90deg);
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                right: 101px;
+                top: 6px;
+                width: 130px;
+                height: 1px;
+                background-color: $cl-yellow;
+            }
+        }
+    }
+
+    @include xs {
+        margin-top: -320px;
+        .bg-pen {
+            .container {
+                .img-pen {
+                    top: 0;
+                    right: 50%;
+                    transform: translate(50%, -16%);
+                }
+            }
+        }
+    }
+    &.--otherpage {
+        margin-top: 0;
+        padding: 100px 0 280px 0;
+        .back-to-top {
+            bottom: -200px;
+        }
+    }
+}

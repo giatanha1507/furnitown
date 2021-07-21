@@ -1,0 +1,28 @@
+@import "core/reset";
+@import "core/variables";
+@import "core/mixins";
+
+@import "core/layouts";
+@import "core/elements";
+@import "core/components";
+@import "core/libs";
+@import "core/bootstrap_mini";
+
+//loading
+@import "core/loading";
+
+//Navigation, header, footer
+@import "core/header";
+@import "core/nav";
+@import "core/footer";
+
+//pages
+@import "pages/home";
+@import "pages/products";
+@import "pages/products-detail";
+@import "pages/projects";
+@import "pages/services";
+@import "pages/news";
+@import "pages/news-detail";
+@import "pages/about-us";
+@import "pages/contact";

@@ -1,0 +1,52 @@
+.servicepage {
+    .introduce {
+        position: relative;
+        .menu-main{
+            transform: translateY(-160%);
+        }
+        &__wrap {
+            position: relative;
+            padding-bottom: 80px;
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                display: inline-block;
+                width: 100%;
+                height: 1px;
+                background-color: #000;
+            }
+        }
+        &__item {
+            .img-item {
+                margin: 50px 0;
+            }
+        }
+        &__advisory {
+            display: flex;
+            align-items: center;
+            &-left {
+                flex-grow: 1;
+                .des {
+                    max-width: 440px;
+                    margin: 40px 0;
+                }
+                p {
+                    @include text(12px, $font-main, 26px, $cl-dark, normal);
+                }
+            }
+            &-right {
+                flex-grow: 1;
+            }
+            @include sm{
+                display: block;
+                &-right {
+                    margin-top: 30px;
+                }
+            }
+        }
+        @include xs{
+            margin-top: 100px;
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.newdetailpage {
+    .new-detail {
+        padding: 40px 0 90px 0;
+        position: relative;
+        &__item {
+            &-header {
+                height: 0;
+                overflow: hidden;
+                position: relative;
+                padding-bottom: 50%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    @include mid(false);
+                }
+            }
+            &-body {
+                .title-new {
+                    max-width: 750px;
+                    @include text(20px, er, 28px, #212121, uppercase);
+                    margin: 60px 0 40px 0;
+                    @include xs {
+                        margin: 30px 0 20px 0;
+                    }
+                }
+                .sub-title {
+                    max-width: 670px;
+                    font-weight: bold;
+                    @include text(12px, $font-main, 24px, #212121, uppercase);
+                }
+                .time {
+                    font-style: italic;
+                    margin: 30px 0;
+                    span {
+                        @include text(
+                            12px,
+                            $font-main,
+                            24px,
+                            #212121,
+                            uppercase
+                        );
+                    }
+                    @include xs {
+                        margin: 15px 0;
+                    }
+                }
+                .content {
+                    max-width: 670px;
+                    @include text(12px, $font-main, 24px, #212121, none);
+                }
+            }
+        }
+        @include xs{
+            padding-top: 90px;
+        }
+    }
+    .new-other {
+        &__top {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            margin-bottom: 30px;
+            h2 {
+                @include mid(false);
+                white-space: nowrap;
+            }
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                width: calc(50% - 110px);
+                height: 1px;
+                background-color: $cl-dark;
+                display: block;
+                z-index: 500;
+                @include xs {
+                    width: calc(50% - 100px);
+                }
+            }
+            &::after {
+                right: 0;
+                padding-left: 40px;
+            }
+        }
+    }
+    @include xs {
+        margin-top: 80px;
+    }
+}

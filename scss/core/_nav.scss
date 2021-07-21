@@ -1,0 +1,397 @@
+nav.menu {
+    width: 100%;
+    height: 70px;
+    background-color: $cl-blue;
+    @include mid(true);
+    z-index: 50;
+    position: fixed;
+    top: -200px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: block;
+    @include transition($t);
+
+    ul {
+        height: 100%;
+        @include mid(true);
+        li {
+            height: 100%;
+            a {
+                display: inline-flex;
+                align-items: center;
+                height: 100%;
+                font-weight: bold;
+                text-decoration: none;
+                @include text(11px, $font-main, normal, $cl-light, uppercase);
+                @include transition($t);
+                &:hover {
+                    color: rgba(255, 255, 255, 0.801);
+                    @include transition($t);
+                }
+            }
+            &:nth-child(2),
+            &:nth-child(6) {
+                margin: 0 50px;
+            }
+        }
+        .logo-menu {
+            margin: 0 90px;
+            a {
+                img {
+                    width: 56px;
+                }
+            }
+        }
+    }
+    &.active {
+        top: 0;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        @include transition($t);
+    }
+    @include xs {
+        display: none;
+    }
+}
+
+.menu-toggle {
+    background-color: #1e2128;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 25px;
+    width: 25%;
+    height: 100vh;
+    transform: translateX(-100%);
+    @include transition($t);
+
+    &__header {
+        h4 {
+            @include text(
+                11px,
+                $font-main,
+                normal,
+                rgba(255, 255, 255, 0.801),
+                uppercase
+            );
+            font-weight: 600;
+        }
+        .social {
+            a {
+                text-decoration: none;
+                margin-left: 15px;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    path {
+                        fill: rgba(255, 255, 255, 0.801);
+                        @include transition($t);
+                    }
+                }
+                &:hover {
+                    svg {
+                        path {
+                            @include transition($t);
+                            fill: #fff;
+                        }
+                    }
+                }
+            }
+            .fb {
+                svg {
+                    width: 30px;
+                }
+            }
+        }
+    }
+    &__body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-left {
+            position: absolute;
+            top: 50%;
+            left: 25px;
+            transform: translateY(-100%);
+            a {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 40px;
+                }
+                &.close {
+                    margin-top: 40px;
+                    svg {
+                        width: 30px;
+                        path {
+                            fill: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        &-right {
+            margin-left: 35px;
+            ul {
+                li {
+                    a {
+                        display: inline-flex;
+                        align-items: center;
+                        height: 100%;
+                        text-decoration: none;
+                        padding: 12px 12px;
+                        position: relative;
+                        opacity: 1;
+                        overflow: hidden;
+                        @include text(16px, er, normal, $cl-light, uppercase);
+                        @include transition($t);
+                        &::after {
+                            content: "";
+                            width: 100%;
+                            height: 1px;
+                            background-color: $cl-light;
+                            position: absolute;
+                            left: 0;
+                            bottom: 10px;
+                            @include transform(scaleX(0));
+                            @include transform-origin(left center);
+                            @include transition(
+                                $t cubic-bezier(0.82, 0.44, 0.23, 0.86)
+                            );
+                        }
+                        &.op {
+                            opacity: 0.2;
+                        }
+                        &:hover {
+                            color: $cl-light;
+                            transition: 0.3s;
+
+                            &::after {
+                                @include transform(scaleX(1));
+                                @include transform-origin(right center);
+                                @include transition(
+                                    $t cubic-bezier(0.82, 0.44, 0.23, 0.86)
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.active {
+        @include transition($t);
+        transform: translateX(0%);
+    }
+    @include sm {
+        display: none;
+    }
+}
+
+.menu-mb {
+    display: none;
+    background-color: $cl-blue;
+    position: fixed;
+    width: 100%;
+    // height: 100vh;
+    z-index: 60;
+
+    &__header {
+        width: 100%;
+        height: 70px;
+        background-color: $cl-blue;
+        @include mid(true);
+        justify-content: space-between;
+        z-index: 80;
+        & > div {
+            padding-left: 30px;
+            @include mid(true);
+            .btn-menu {
+                display: inline-flex;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                .hamburger-menu,
+                .hamburger-menu:after,
+                .hamburger-menu:before {
+                    width: 40px;
+                    height: 2px;
+                }
+
+                .hamburger-menu {
+                    position: relative;
+                    background: $cl-light;
+                    transition: all 0.1s;
+                    &.clicked {
+                        background: rgba(255, 255, 255, 0);
+                    }
+                }
+
+                .hamburger-menu:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 10px;
+                    background: $cl-light;
+                    transition: bottom 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49),
+                        transform 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+                }
+
+                .hamburger-menu:after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 10px;
+                    background: $cl-light;
+                    transition: top 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+                }
+
+                .hamburger-menu.clicked:after {
+                    top: 0;
+                    transform: rotate(45deg);
+                    transition: top 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+                }
+
+                .hamburger-menu.clicked:before {
+                    bottom: 0;
+                    transform: rotate(-45deg);
+                    transition: bottom 0.1s cubic-bezier(0.65, 0.29, 0.32, 0.49);
+                }
+            }
+            h3 {
+                margin-left: 15px;
+                @include text(11px, $font-main, normal, $cl-light, uppercase);
+                font-weight: bold;
+            }
+        }
+        .logo {
+            padding-right: 30px;
+
+            img {
+                width: 60px;
+            }
+        }
+    }
+    &__body {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        transform: translate(-50%, 0%);
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        background-color: #1e2322;
+        z-index: -1;
+        padding-top: 40px;
+        @include transition($t);
+        .top {
+            margin: 0 40px 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            h4 {
+                @include text(
+                    11px,
+                    $font-main,
+                    normal,
+                    rgba(255, 255, 255, 0.801),
+                    uppercase
+                );
+                font-weight: 600;
+            }
+            .social {
+                a {
+                    text-decoration: none;
+                    margin-left: 15px;
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        path {
+                            fill: rgba(255, 255, 255, 0.801);
+                            @include transition($t);
+                        }
+                    }
+                    &:hover {
+                        svg {
+                            path {
+                                @include transition($t);
+                                fill: #fff;
+                            }
+                        }
+                    }
+                }
+                .fb {
+                    svg {
+                        width: 30px;
+                    }
+                }
+            }
+        }
+        ul {
+            position: absolute;
+            z-index: 50;
+            li {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: start;
+                margin: 0 40px;
+                a {
+                    padding: 20px 0px;
+                    text-decoration: none;
+                    display: inline-flex;
+                    justify-content: start;
+                    align-items: center;
+                    height: 100%;
+                    text-decoration: none;
+                    @include text(14px, er, normal, $cl-light, uppercase);
+                    @include transition($t);
+                    &:hover {
+                        color: rgba(255, 255, 255, 0.801);
+                        @include transition($t);
+                    }
+                }
+                &.--group {
+                    flex-direction: initial;
+                    margin-top: 30px;
+                    a {
+                        position: relative;
+                        padding: 0 12px;
+                        &:first-child {
+                            padding-left: 0;
+                        }
+                        &:last-child {
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                display: inline-flex;
+                                background-color: $cl-light;
+                                width: 1px;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.active {
+            @include transition($t);
+            left: 50%;
+        }
+    }
+
+    @include sm {
+        display: block;
+    }
+}

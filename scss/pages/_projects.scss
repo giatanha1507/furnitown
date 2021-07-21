@@ -1,0 +1,105 @@
+.projectpage {
+    position: relative;
+    a {
+        text-decoration: none;
+    }
+    .menu-main {
+        top: 0;
+        transform: translateY(70%);
+    }
+    .introduce {
+        &__wrap {
+            &-item {
+                padding-bottom: 15%;
+                .title-section {
+                    text-align: left;
+                }
+                .sub-title {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    border-bottom: 1px solid #c0c0c0;
+                    padding: 30px 0 60px 0;
+                    p {
+                        max-width: 450px;
+                        @include text(12px, $font-main, 22px, $cl-dark, normal);
+                    }
+                    @include xs {
+                        display: block;
+                        padding-top: 20px;
+                        a {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+            @include xs {
+                margin-top: 100px;
+                &-item {
+                    height: 100%;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+    .product {
+        padding-bottom: 80px;
+        &__wrap {
+            &::before {
+                display: none;
+            }
+        }
+        &__item {
+            &-header {
+                .img-product {
+                    padding-bottom: 63%;
+                }
+                a {
+                    h4 {
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                    }
+                }
+                .des {
+                    margin: 30px 0;
+                    @include text(12px, $font-main, 22px, $cl-dark, normal);
+                }
+            }
+        }
+    }
+}
+.projectpage,
+.newpage {
+    .project__paging,
+    .new__paging {
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            li {
+                a {
+                    text-decoration: none;
+                    padding: 6px 8px;
+                    @include text(12px, $font-main, normal, $cl-dark, normal);
+                    background-color: transparent;
+                    border: 1px solid transparent;
+                    @include transition($t);
+                    &:hover {
+                        border: 1px solid #585958;
+                        @include transition($t);
+                        background-color: #c0c0c0;
+                    }
+                    &.active {
+                        border: 1px solid #585958;
+                        @include transition($t);
+                        background-color: #c0c0c0;
+                    }
+                }
+                &:not(:first-child) {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

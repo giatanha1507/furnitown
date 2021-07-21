@@ -1,0 +1,291 @@
+// css button, title, icon, elements...
+img {
+    max-width: 100%;
+}
+
+.menu-main {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $cl-main;
+    z-index: 30;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    @include transition($t);
+    .logo {
+        width: 42px;
+        margin-bottom: 15px;
+    }
+    .btn-menu {
+        width: 45px;
+        height: 25px;
+        position: relative;
+        span,
+        &::after,
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: $cl-light;
+            position: absolute;
+            @include transition($t);
+        }
+        span {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &::after {
+            top: 0;
+        }
+        &::before {
+            bottom: 0;
+        }
+    }
+    &:hover {
+        background-color: $cl-light;
+        @include transition($t);
+        .btn-menu {
+            span,
+            &::after,
+            &::before {
+                @include transition($t);
+                background-color: $cl-dark;
+            }
+        }
+    }
+    &.active {
+        background-color: $cl-light;
+        @include transition($t);
+        .btn-menu {
+            span,
+            &::after,
+            &::before {
+                @include transition($t);
+                background-color: $cl-dark;
+            }
+        }
+    }
+    @include sm {
+        display: none;
+    }
+    &.--menu-main-bt {
+        top: initial;
+        bottom: 0;
+        transform: initial;
+    }
+}
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99;
+    &.active {
+        pointer-events: auto;
+        background-color: rgba($color: #000000, $alpha: 0.85);
+        @include transition($t);
+    }
+}
+.btn-main {
+    text-decoration: none;
+    padding: 10px 35px;
+    @include text(12px, $font-main, normal, $cl-light, uppercase);
+    background-color: $cl-dark;
+    font-weight: 600;
+    border-radius: 4px;
+    @include transition($t);
+    &.--no-radius {
+        @include mid(true);
+        display: inline-flex;
+        border-radius: 0;
+        border: 1px solid $cl-dark;
+        svg {
+            width: 10px;
+            height: 10px;
+            margin-left: 10px;
+            transform: rotate(90deg);
+            path {
+                fill: #fff;
+            }
+        }
+        &:hover {
+            svg {
+                path {
+                    fill: #000;
+                }
+            }
+        }
+    }
+    &:hover {
+        background-color: $cl-light;
+        color: $cl-dark;
+        @include transition($t);
+    }
+    &.--bg-tran {
+        background-color: #fafafa;
+        color: $cl-dark;
+        border: 1px solid $cl-dark;
+        &:hover {
+            background-color: $cl-dark;
+            color: $cl-light;
+            @include transition($t);
+        }
+    }
+}
+.title-room {
+    @include text(12px, $font-main, 40px, $cl-dark, uppercase);
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+a.btn-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    @include text(11px, $font-main, normal, $cl-light, uppercase);
+    font-weight: bold;
+    overflow: hidden;
+    img {
+        width: 25px;
+        margin-left: 20px;
+        @include transition($t);
+    }
+    &:hover {
+        img {
+            @include transition($t);
+            margin-left: 25px;
+        }
+    }
+}
+a.btn-detail {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    @include text(11px, $font-main, normal, $cl-dark, uppercase);
+    font-weight: bold;
+    overflow: hidden;
+    @include transition($t);
+    span {
+        margin-left: 20px;
+    }
+    svg {
+        width: 22px;
+        height: 22px;
+        margin-right: 20px;
+        @include transition($t);
+    }
+    &:hover {
+        color: rgba(0, 0, 0, 0.705);
+        @include transition($t);
+        svg {
+            fill: rgba(0, 0, 0, 0.705);
+            @include transition($t);
+        }
+    }
+}
+a.view-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    @include text(11px, $font-main, normal, #909090, uppercase);
+    overflow: hidden;
+    @include transition($t);
+    span {
+        margin-top: 20px;
+    }
+    svg {
+        width: 22px;
+        height: 22px;
+        @include transition($t);
+        transform: rotate(90deg);
+        path {
+            fill: #909090;
+        }
+    }
+    &:hover {
+        color: $cl-dark;
+        @include transition($t);
+        svg {
+            path {
+                fill: $cl-dark;
+                @include transition($t);
+            }
+        }
+    }
+}
+
+.show-more {
+    cursor: pointer;
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    right: 15px;
+    bottom: 50px;
+    background-color: #374042;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    @include transition($t);
+    svg {
+        width: 20px;
+        height: 20px;
+        path {
+            fill: #fff;
+            @include transition($t);
+        }
+    }
+    &:hover {
+        @include transition($t);
+        background-color: transparent;
+        border: 1px solid #374042;
+        svg {
+            path {
+                @include transition($t);
+                fill: #374042;
+            }
+        }
+    }
+    &.--prev,
+    &.--next {
+        width: 60px;
+        height: 60px;
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+        @include sm {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    @include sm {
+        width: 60px;
+        height: 60px;
+    }
+}
+.title-section {
+    @include text(18px, er, normal, $cl-text, uppercase);
+    text-align: center;
+    &.--textleft {
+        text-align: left;
+    }
+    &.--white {
+        color: $cl-light;
+    }
+    &.--cl-yellow{
+        color: $cl-yellow;
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+}
